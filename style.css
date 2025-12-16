@@ -1,45 +1,82 @@
+/* GLOBAL STYLES */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f1ec;
+  background: #f4f1ec; /* soft earth-toned background */
   color: #1a1a1a;
   text-align: center;
 }
 
+/* HERO SECTION */
 .hero {
-  padding: 100px 20px;
+  padding: 120px 20px;
+  background: url('your-hero-image.jpg') center/cover no-repeat; /* optional hero image */
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero h1 {
   letter-spacing: 0.2em;
+  font-size: 3rem;
 }
 
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* ABOUT & SIGNUP SECTIONS */
 .about,
 .signup {
   max-width: 600px;
   margin: 60px auto;
   padding: 0 20px;
+  line-height: 1.7;
+  font-size: 1.05rem;
 }
 
+.signup h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.signup p {
+  margin-bottom: 20px;
+}
+
+/* EMAIL FORM */
 .signup form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-input {
+input[type="email"] {
   padding: 12px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
+/* BUTTON WITH OLIVE ACCENT */
 button {
   padding: 12px;
   background: #1a1a1a;
   color: #fff;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  background: #708238; /* subtle olive accent on hover */
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
 footer {
   margin: 80px 0 40px;
   display: flex;
@@ -50,4 +87,24 @@ footer {
 footer a {
   color: #1a1a1a;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
+
+footer a:hover {
+  color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .about, .signup {
+    margin: 40px auto;
+  }
+}
+
