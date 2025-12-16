@@ -1,8 +1,8 @@
-/* GENERAL STYLES */
+/* BASE STYLES */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f1ec; /* soft earth-tone */
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f1ec;
   color: #1a1a1a;
   text-align: center;
 }
@@ -13,47 +13,76 @@ body {
   padding: 40px 20px;
 }
 
-.hero-image {
+.hero-container {
   width: 100%;
   max-width: 900px;
-  height: auto;
-  border-radius: 12px;
-  display: block;
+  height: 500px;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   border: 2px solid rgba(42,42,42,0.15);
+  position: relative;
 }
 
+.hero-container .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.5s ease, opacity 1s ease;
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.hero-container .hero-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-container:hover .hero-image {
+  transform: scale(1.08);
+}
+
+/* HERO TEXT BOX */
 .hero-text-box {
   position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    rgba(230, 226, 217, 0.85),
-    rgba(230, 226, 217, 0.65)
-  );
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  background: rgba(230, 226, 217, 0.75);
+  border-left: 6px solid #a3a65d; /* subtle olive accent */
   padding: 20px 30px;
-  border-radius: 10px;
-  max-width: 90%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  max-width: 40%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-align: left;
+  animation: fadeUp 1s ease forwards;
 }
 
+/* Accent stripe hover pulse */
+.hero-text-box:hover {
+  border-left-color: #8c9250;
+  transition: border-color 0.5s ease;
+}
+
+/* HERO TEXT */
 .hero-text-box h1 {
-  font-size: 2.6rem;
-  margin: 0 0 8px;
-  letter-spacing: 0.08em;
-  color: #1a1a1a;
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  color: #2a2a2a;
+  display: inline-block;
+  animation: textFadeUp 1.2s ease forwards;
 }
 
 .hero-text-box p {
-  font-size: 1.15rem;
-  margin: 0;
-  color: #3a3a3a;
-  line-height: 1.4;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  animation: textFadeUp 1.4s ease forwards;
 }
 
-/* ABOUT & SIGNUP SECTIONS */
+/* ABOUT & SIGNUP */
 .about,
 .signup {
   max-width: 600px;
@@ -66,7 +95,6 @@ body {
 .signup h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #2a2a2a;
 }
 
 .signup p {
@@ -84,13 +112,7 @@ input[type="email"] {
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border-color 0.3s ease;
-}
-
-input[type="email"]:focus {
-  border-color: #78866b; /* subtle olive accent */
-  outline: none;
+  border-radius: 4px;
 }
 
 button {
@@ -98,17 +120,16 @@ button {
   background: #1a1a1a;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background: #333;
-  transform: translateY(-2px);
 }
 
-/* FOOTER WITH ICON BOXES */
+/* FOOTER */
 footer {
   margin: 80px 0 40px;
   display: flex;
@@ -117,41 +138,53 @@ footer {
 }
 
 footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #e6e2d9;
-  padding: 10px 16px;
-  border-radius: 8px;
   text-decoration: none;
-  font-weight: 500;
-  color: #1a1a1a;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-footer a img {
-  width: 24px;
-  height: 24px;
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
-footer a:hover {
-  background: #78866b; /* subtle olive accent */
-  color: #fff;
-  transform: translateY(-2px);
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes textFadeUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-text-box {
+    max-width: 60%;
+    padding: 15px 20px;
+  }
+}
+
 @media (max-width: 600px) {
+  .hero-container {
+    height: 350px;
+  }
+  .hero-text-box {
+    max-width: 80%;
+    left: 10%;
+  }
   .hero-text-box h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   .hero-text-box p {
     font-size: 1rem;
   }
   .about, .signup {
     margin: 40px auto;
-  }
-  footer {
-    flex-direction: column;
   }
 }

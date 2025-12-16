@@ -10,7 +10,9 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <img src="images/dmgold.jpg" alt="The Dirt Made Gold Set" class="hero-image" />
+    <div class="hero-container">
+      <img src="images/dmgold.jpg" alt="The Dirt Made Gold Set" class="hero-image" />
+    </div>
     <div class="hero-text-box">
       <h1>REVIVAL ATELIER™</h1>
       <p>Contemporary streetwear rooted in renewal.</p>
@@ -31,21 +33,28 @@
   <section class="signup">
     <h2>The Dirt Made Gold</h2>
     <p>Our first release. Join the list to be notified.</p>
+
     <form action="https://formspree.io/f/mvgejzza" method="POST">
       <input type="email" name="email" placeholder="Your email" required />
       <button type="submit">Join the list</button>
     </form>
   </section>
 
-  <!-- FOOTER -->
+  <!-- SOCIAL LINKS -->
   <footer>
     <a href="https://www.instagram.com/revivalatelier_store/" target="_blank">
-      <img src="images/instagram_3955027.png" alt="Instagram"> Instagram
+      <img src="images/instagram_3955027.png" alt="Instagram" class="social-icon" />
     </a>
     <a href="https://www.tiktok.com/@revival.atelier" target="_blank">
-      <img src="images/tik-tok_3046121.png" alt="TikTok"> TikTok
+      <img src="images/tik-tok_3046121.png" alt="TikTok" class="social-icon" />
     </a>
   </footer>
+
+  <!-- Optional: small script to add "loaded" class for fade-in hero image -->
+  <script>
+    const heroImg = document.querySelector('.hero-image');
+    heroImg.onload = () => heroImg.classList.add('loaded');
+  </script>
 
 </body>
 </html>
